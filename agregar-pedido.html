@@ -36,7 +36,7 @@
 
 			return true;
 		}
-		fetch('./options.json')
+		fetch('https://raw.githubusercontent.com/tampueroc/cc5002-tarea-1/main/options.json')
 		  .then(response => response.json())
 		  .then(data => {
 		    let regionSelect = document.getElementById('region');
