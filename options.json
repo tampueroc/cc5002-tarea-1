@@ -1,0 +1,28 @@
+{
+    "regions": [
+      {
+        "name": "Region 1",
+        "comunas": [
+          "Comuna 1",
+          "Comuna 2",
+          "Comuna 3"
+        ]
+      },
+      {
+        "name": "Region 2",
+        "comunas": [
+          "Comuna 4",
+          "Comuna 5",
+          "Comuna 6"
+        ]
+      },
+      {
+        "name": "Region 3",
+        "comunas": [
+          "Comuna 7",
+          "Comuna 8",
+          "Comuna 9"
+        ]
+      }
+    ]
+  }

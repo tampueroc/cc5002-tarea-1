@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Form Validation Example</title>
+	<script>
+    function validateForm() {
+			let region = document.getElementById("region").value;
+			let comuna = document.getElementById("comuna").value;
+			let street = document.getElementById("street").value;
+			let type = document.getElementById("type").value;
+
+			if (region == "") {
+				alert("Please select a region.");
+				return false;
+			}
+
+			if (comuna == "") {
+				alert("Please select a comuna.");
+				return false;
+			}
+
+			if (street == "") {
+				alert("Please enter your street name.");
+				return false;
+			}
+
+			if (street.length > 80) {
+				alert("Street name must be less than 80 characters.");
+				return false;
+			}
+
+			if (type == "") {
+				alert("Please select a type.");
+				return false;
+			}
+
+			return true;
+		}
+		fetch('./options.json')
+		  .then(response => response.json())
+		  .then(data => {
+		    let regionSelect = document.getElementById('region');
+		    let comunaSelect = document.getElementById('comuna');
+
+		    data.regions.forEach(region => {
+		      let option = document.createElement('option');
+		      option.value = region.value;
+		      option.text = region.text;
+		      regionSelect.add(option);
+		    });
+
+		    data.comunas.forEach(comuna => {
+		      let option = document.createElement('option');
+		      option.value = comuna.value;
+		      option.text = comuna.text;
+		      comunaSelect.add(option);
+		    });
+		  })
+		  .catch(error => console.error(error));
+	</script>
+</head>
+<body>
+	<form onsubmit="return validateForm()">
+		<label for="region">Region:</label>
+		<select id="region" name="region" required>
+			<option value="">--Select Region--</option>
+		</select>
+
+		<label for="comuna">Comuna:</label>
+		<select id="comuna" name="comuna" required>
+			<option value="">--Select Comuna--</option>
+		</select>
+
+		<label for="street">Street:</label>
+		<input type="text" id="street" name="street" maxlength="80" required>
+
+		<label for="type">Type:</label>
+		<select id="type" name="type" required>
+			<option value="">--Select Type--</option>
+			<option value="fruta">Fruta</option>
+			<option value="verdura">Verdura</option>
+			<option value="otro">Otro</option>
+		</select>
+
+        <input type="submit" value="Submit">
+    </form> 
+</body>
+</html> 
